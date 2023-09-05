@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 public class menu extends javax.swing.JFrame {
 
     public static ArrayList empresas = new ArrayList();
-    public static Empresa agregar;
 
     /**
      * Creates new form menu
@@ -137,7 +136,8 @@ public class menu extends javax.swing.JFrame {
 
         jLabel5.setText("Categoria");
 
-        jccategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Empleado", "Jefe", "Cordinador", "Limpieza" }));
+        jccategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Empleado", "Jefe", "Coordinador", "Limpieza" }));
+        jccategoria.setToolTipText("");
 
         jLabel6.setText("Sueldo");
 
@@ -242,8 +242,6 @@ public class menu extends javax.swing.JFrame {
                 .addGap(6, 6, 6))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nahue\\OneDrive\\Escritorio\\noche-estrellada-en-la-ciudad_1280x720_xtrafondos.com.jpg")); // NOI18N
-
         jMenu2.setText("Empleados");
         jMenuBar1.add(jMenu2);
 
@@ -273,7 +271,7 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
         );
 
         pack();
@@ -283,8 +281,8 @@ public class menu extends javax.swing.JFrame {
         
         Empresa empresita= (Empresa)jcempresas.getSelectedItem();
         
-        JOptionPane.showMessageDialog(this, "Empleados de " + empresita.getRazonSocial()+
-                ":\n" + empresita.mostrarEmpleados());
+        JOptionPane.showMessageDialog(this, "Empleados de " + empresita.getRazonSocial().toUpperCase()+
+        ":\n" + empresita.mostrarEmpleados());
         
 
     }//GEN-LAST:event_jbmostrarempleadosActionPerformed
@@ -348,6 +346,9 @@ public class menu extends javax.swing.JFrame {
                 Empresa empre = (Empresa) jcempresas.getSelectedItem();
 
                 Empleado agregarempleado = new Empleado(documento, nombre, apellido, categoria, sueldo, empre);
+                
+                Empresa.empleados.add(agregarempleado);
+                
 
                 JOptionPane.showMessageDialog(this, "Empleado agregador correctamente..");
                 

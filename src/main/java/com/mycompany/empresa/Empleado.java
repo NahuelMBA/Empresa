@@ -67,7 +67,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return  nombre + apellido ;
+        return  nombre + "  " + apellido + " - "+categoria ;
     }
 
     
